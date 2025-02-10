@@ -1,0 +1,11 @@
+<div class="row p-4">
+  <div class="col" style="max-width: 300px;">
+    <div class="sticky-top">
+      <app-nav-bar (openPage)="getCurrentPage($event)"></app-nav-bar>
+    </div>
+  </div>
+  <div class="col">
+    <app-home *ngIf="currentPage == 'Home'"></app-home>
+    <app-explore *ngIf="currentPage == 'Explore'"></app-explore>
+  </div>
+</div>

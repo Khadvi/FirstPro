@@ -1,0 +1,7 @@
+.name-st {
+    display: block;
+    max-width: 65px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+}
