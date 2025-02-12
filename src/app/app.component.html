@@ -1,5 +1,5 @@
 <div class="row p-4">
-  <div class="col" style="max-width: 300px;">
+  <div class="col border-end" style="max-width: 300px;">
     <div class="sticky-top">
       <app-nav-bar (openPage)="getCurrentPage($event)"></app-nav-bar>
     </div>
@@ -12,6 +12,7 @@
     <app-notifications *ngIf="currentPage == 'Notifications'"></app-notifications>
     <app-create *ngIf="currentPage == 'Create'"></app-create>
     <app-profile *ngIf="currentPage == 'Profile'"></app-profile>
+    <app-e-commerce *ngIf="currentPage == 'E-Commerce'"></app-e-commerce>
     <app-task-manager *ngIf="currentPage == 'Task Manager'"></app-task-manager>
     <app-more *ngIf="currentPage == 'More'"></app-more>
   </div>

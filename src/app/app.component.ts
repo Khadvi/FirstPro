@@ -11,10 +11,11 @@ import { CreateComponent } from './create/create.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MoreComponent } from './more/more.component';
 import { TaskManagerComponent } from './task-manager/task-manager.component';
+import { ECommerceComponent } from './e-commerce/e-commerce.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,NavBarComponent,HomeComponent,ExploreComponent, CommonModule, ReelsComponent, MessagesComponent, NotificationsComponent, CreateComponent, ProfileComponent, TaskManagerComponent, MoreComponent],
+  imports: [RouterOutlet, NavBarComponent, HomeComponent, ExploreComponent, CommonModule, ReelsComponent, MessagesComponent, NotificationsComponent, CreateComponent, ProfileComponent, TaskManagerComponent, MoreComponent, ECommerceComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
