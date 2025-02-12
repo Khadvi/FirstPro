@@ -1,26 +1,37 @@
-<p>task-manager works!</p>
-
-<div class="row" style="max-width: 50%;">
-    <div class="col">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let task of allTasks">
-                {{task?.name}}
-                <button (click)="removeTask(task.id)">Delete</button>
-                <!-- <button (click)="taskComp">Completed</button> -->
-            </li>
-        </ul>
+<div class="row">
+    <div class="row" style="max-width: 50%;">
+        <div class="col">
+            <b>New Tasks</b>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let task of allTasks">
+                    <div>
+                        {{task?.name}}
+                    </div>
+                    <div>
+                        <button (click)="removeTask(task.id)">Remove</button>
+                        <button (click)="taskComp(task.id)">Completed</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" id="task" name="task" class="form-control" placeholder="Add your task here..." [(ngModel)]="newTask">
+            <button (click)="addTask()">Add</button>
+        </div>
     </div>
-    <div class="input-group mb-3">
-        <input type="text" id="task" name="task" class="form-control" placeholder="Add your task here..." [(ngModel)]="newTask">
-        <button (click)="addTask()">Add</button>
+    <div class="row" style="max-width: 50%;">
+        <div class="col">
+            <b>Completed Tasks</b>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between" *ngFor="let task of completedTasks">
+                    <div>
+                        {{task?.name}}
+                    </div>
+                    <div>
+                        <button (click)="deleteTask(task.id)">Delete</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
-<!-- <div class="row" style="max-width: 50%;">
-    <div class="col">
-        <ul class="list-group">
-            <li class="list-group-item" *ngFor="let task of compTasks">
-                {{task?.name}}
-            </li>
-        </ul>
-    </div>
-</div> -->
