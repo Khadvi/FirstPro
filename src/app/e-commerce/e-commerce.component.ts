@@ -1,15 +1,17 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-e-commerce',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './e-commerce.component.html',
   styleUrl: './e-commerce.component.css'
 })
 export class ECommerceComponent {
 
-  userText = {userName:'', passWord:'' }
+  userText = {user:'', pass:'' }
+  message = '';
 
   users:any = [
     {
@@ -23,8 +25,8 @@ export class ECommerceComponent {
   ngOnInit() {
     const loginForm = document.getElementById("loginForm");
     const createForm = document.getElementById("formToCreate");
-    console.log('Login', loginForm?.style.display);
-    console.log('create', createForm?.style.display);
+    // console.log('Login', loginForm?.style.display);
+    // console.log('create', createForm?.style.display);
     if (createForm) {
       createForm.style.display = "none";
     }
@@ -36,8 +38,8 @@ export class ECommerceComponent {
     if(loginForm && createForm) {
       loginForm.style.display = "none";
       createForm.style.display = "block";
-      console.log('Login', loginForm?.style.display);
-      console.log('create', createForm?.style.display);
+      // console.log('Login', loginForm?.style.display);
+      // console.log('create', createForm?.style.display);
     }
   }
 
@@ -47,26 +49,40 @@ export class ECommerceComponent {
     if(loginForm && createForm){
       loginForm.style.display = "block";
       createForm.style.display = "none";
-      console.log('Login', loginForm?.style.display);
-      console.log('create', createForm?.style.display);
+      // console.log('Login', loginForm?.style.display);
+      // console.log('create', createForm?.style.display);
     }
   }
 
   userLogin(){
-    const crtUser = this.users.find((d:any) => d.user == this.userText.userName)
-    console.log(crtUser);
-    console.log(this.userText);
+    const crtUser = this.users.find((d:any) => d.user == this.userText.user)
+    const loginForm = document.getElementById("loginForm");
+    const createForm = document.getElementById("formToCreate");
+    const eWebsite = document.getElementById('e-website');
+    // console.log(crtUser);
+    // console.log(this.users);
+    // console.log(this.userText);
     if(crtUser){
-      if(crtUser.pass == this.userText.passWord){
-        alert('Successfull');
+      if(crtUser.pass == this.userText.pass){
+        this.message = 'Login Successfull';
+        if(loginForm && createForm && eWebsite){
+          loginForm.style.display = "none";
+          createForm.style.display = "none";
+          eWebsite.style.display = "block";
+        }
       }
       else{
-        alert('Incorrect Password');
+        this.message = 'Incorrect Password. Try again...';
       }
     }
     else{
-      alert('User does not Exist');
+      this.message = 'Incorrect User Name or User does not Exist';
     }
+  }
+
+  createAccount(){
+    this.users.push(this.userText);
+    // console.log(this.users);
   }
 
 }
