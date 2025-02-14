@@ -1,4 +1,4 @@
-<div id="loginForm" style="display: block;">
+<div id="loginForm" style="display: none;">
     <div class="container col d-flex justify-content-center shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 40rem;">
         <div>
             <div class="row" style="max-width: 20rem;">
@@ -62,37 +62,34 @@
 
 <!-- _____________________________________________________________________________________________________________________________________________________________________ -->
 
-<div id="e-website" style="display: none;">
+<div id="e-website" style="display: block;">
     <nav class="nav mb-4">
-        <a href="#" class="nav-link">Items</a>
-        <a href="#" class="nav-link">Cart</a>
-        <a href="#" class="nav-link">Account</a>
+        <a href="#" class="nav-link" (click)="activeTab('items')">Items</a>
+        <a href="#" class="nav-link" (click)="activeTab('cart')">Cart</a>
+        <a href="#" class="nav-link" (click)="activeTab('account')">Account</a>
     </nav>
 
-    <!-- Items  -->
-    <div class="container">
-        <div class="row">
-            <div class="col-4 mb-3">
-                <div class="card">
-                    <img class="card-img-top" src="" alt="Card image cap">
+    <div class="container" *ngIf="currentTab == 'items'">
+        <div class="row card-group">
+            <div class="col-4 mb-3" *ngFor="let itemDetail of itemDetails">
+                <div class="card" id="{{itemDetail.id}}">
+                    <img class="card-img-top" src="{{ itemDetail.img }}" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+                        <h5 class="card-title">{{ itemDetail.name }}</h5>
+                        <p class="card-text">{{ itemDetail.title }}</p>
+                        <a href="#" class="btn btn-success float-end">Add to Cart</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Cart  -->
-     <div class="container">
-
+     <div class="container" *ngIf="currentTab == 'cart'">
+        Your Cart is empty
      </div>
 
-     <!-- Account -->
-     <div class="container">
-
+     <div class="container" *ngIf="currentTab == 'account'">
+        your Account Details
      </div>
 
 </div>
