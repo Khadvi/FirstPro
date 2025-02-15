@@ -13,6 +13,7 @@ export class ECommerceComponent {
   userText = {user:'', pass:'' }
   message = '';
   currentTab = 'items';
+  isCart = '';
   itemDetails:any = [
     {
       name: 'Kurama',
@@ -70,12 +71,17 @@ export class ECommerceComponent {
     }
   ]
 
+    
+    
+
+  cartDetails: any = [];
+
   users:any = [
     {
-      user:'khadvi' , pass:'khadvi09'
+      user:'khadvi' , pass:'khadvi'
     },
     {
-      user:'sharath' , pass:'raccha143'
+      user:'sharath' , pass:'sharath'
     }
   ]
 
@@ -147,11 +153,45 @@ export class ECommerceComponent {
       this.currentTab = 'items';
     }
     else if(p == 'cart'){
-      this,this.currentTab = 'cart';
+      this.currentTab = 'cart';
+      // console.log(this.cartDetails.length);
+      if(this.cartDetails.length < 1){
+        this.isCart = 'empty';
+      }
+      else{
+        this.isCart = 'notEmpty';
+      }
     }
     else if(p == 'account'){
       this.currentTab = 'account'
     }
+  }
+
+  addToCart(d:any){
+    const newItem = this.itemDetails.find((i: { id: any; }) => i.id === d);
+    if(!this.cartDetails.includes(newItem)){
+      newItem.numb = 1;
+      this.cartDetails.push(newItem);
+    }
+    else{
+      newItem.numb++;
+    }
+    console.log(this.cartDetails);
+  }
+
+  inItemCount(d: any){
+    const itemCount = this.cartDetails.find((i: { id: any; }) => i.id === d);
+    itemCount.numb++;
+  }
+
+  decItemCount(d: any){
+    const itemCount = this.cartDetails.find((i: { id: any; }) => i.id === d);
+    itemCount.numb--;
+  }
+
+  deleteItem(d:any){
+    this.cartDetails = this.cartDetails.filter((i: {id: any}) => i.id !== d);
+    console.log(this.cartDetails)
   }
 
 }
