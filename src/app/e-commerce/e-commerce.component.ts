@@ -70,13 +70,9 @@ export class ECommerceComponent {
       id: '1',
       img: 'https://th.bing.com/th/id/OIP.l-gIDCGzyghN9kRTE3ZaSgAAAA?rs=1&pid=ImgDetMain'
     }
-  ]
-
-    
-    
+  ];
 
   cartDetails: any = [];
-
   users:any = [
     {
       user:'khadvi' , pass:'khadvi'
@@ -146,7 +142,22 @@ export class ECommerceComponent {
 
   createAccount(){
     this.users.push(this.userText);
-    // console.log(this.users);
+    const createForm = document.getElementById("formToCreate");
+    const continueLogin = document.getElementById("actCreatSuccess");
+    if(createForm && continueLogin){
+      createForm.style.display = "none";
+      continueLogin.style.display = "block";
+      console.log('create',createForm?.style.display,'continue',continueLogin?.style.display);
+    }
+  }
+
+  goToLogin(){
+    const loginForm = document.getElementById("loginForm");
+    const continueLogin = document.getElementById("actCreatSuccess");
+    if(loginForm && continueLogin){
+      continueLogin.style.display = "none";
+      loginForm.style.display = "block";
+    }
   }
 
   activeTab(p:any){
@@ -205,6 +216,9 @@ export class ECommerceComponent {
       logOut.style.display = "none";
       loginForm.style.display = "block";
     }
+    this.message = '';
+    this.userText = { user: '', pass: '' };
+    this.currentTab = 'items'; 
   }
 
 }
