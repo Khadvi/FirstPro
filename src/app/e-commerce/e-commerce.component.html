@@ -1,4 +1,4 @@
-<div id="loginForm" style="display: none;">
+<div id="loginForm" style="display: block;">
     <div class="container col d-flex justify-content-center shadow-lg p-3 mb-5 bg-white rounded" style="max-width: 40rem;">
         <div>
             <div class="row" style="max-width: 20rem;">
@@ -62,11 +62,12 @@
 
 <!-- _____________________________________________________________________________________________________________________________________________________________________ -->
 
-<div id="e-website" style="display: block;">
-    <nav class="nav mb-4">
+<div id="e-website" style="display: none;">
+    <nav class="nav mb-4 border">
         <a href="#" class="nav-link" (click)="activeTab('items')">Items</a>
         <a href="#" class="nav-link" (click)="activeTab('cart')">Cart</a>
         <a href="#" class="nav-link" (click)="activeTab('account')">Account</a>
+        <a href="#" class="nav-link ms-auto" (click)="logout()">Logout</a>
     </nav>
 
     <div class="container" *ngIf="currentTab == 'items'">

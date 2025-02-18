@@ -14,6 +14,7 @@ export class ECommerceComponent {
   message = '';
   currentTab = 'items';
   isCart = '';
+  // logOut:any = document.getElementById("e-website");
   itemDetails:any = [
     {
       name: 'Kurama',
@@ -165,6 +166,9 @@ export class ECommerceComponent {
     else if(p == 'account'){
       this.currentTab = 'account'
     }
+    else if(p == 'logout'){
+      this.currentTab = 'logout';
+    }
   }
 
   addToCart(d:any){
@@ -192,6 +196,15 @@ export class ECommerceComponent {
   deleteItem(d:any){
     this.cartDetails = this.cartDetails.filter((i: {id: any}) => i.id !== d);
     console.log(this.cartDetails)
+  }
+
+  logout(){
+    const logOut = document.getElementById("e-website");
+    const loginForm = document.getElementById("loginForm");
+    if(logOut && loginForm){
+      logOut.style.display = "none";
+      loginForm.style.display = "block";
+    }
   }
 
 }
