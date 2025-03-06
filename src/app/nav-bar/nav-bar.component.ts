@@ -12,7 +12,7 @@ export class NavBarComponent {
   currentPage:string = 'Home';
 
   activePage(page:any){
-    console.log(page, 'nav-bar-comp');
+    // console.log(page, 'nav-bar-comp');
     this.currentPage = page;
     this.openPage.emit(this.currentPage);
   }
